@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Online Warna-Warni</title>
+    <style>
+        /* CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        nav {
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            padding: 15px;
+            text-align: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .products-title {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 2rem;
+            color: #ff6b6b;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            padding-bottom: 50px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: #ff6b6b;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .add-to-cart {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255,105,105,0.3);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons i {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        
+        /* Warna berbeda untuk setiap produk */
+        .color-1 .product-image { background-color: #ff9a9e; }
+        .color-2 .product-image { background-color: #a18cd1; }
+        .color-3 .product-image { background-color: #fbc2eb; }
+        .color-4 .product-image { background-color: #84fab0; }
+        .color-5 .product-image { background-color: #8fd3f4; }
+        .color-6 .product-image { background-color: #ffc3a0; }
+        .color-7 .product-image { background-color: #ffafbd; }
+        .color-8 .product-image { background-color: #a1c4fd; }
+        .color-9 .product-image { background-color: #c2e9fb; }
+        .color-10 .product-image { background-color: #d4fc79; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- HTML -->
+    <header>
+        <div class="logo">TokoWarna</div>
+        <p>Temukan produk warna-warni favoritmu</p>
+    </header>
+    
+    <nav>
+        <a href="#">Beranda</a>
+        <a href="#">Produk</a>
+        <a href="#">Kategori</a>
+        <a href="#">Tentang Kami</a>
+        <a href="#">Kontak</a>
+    </nav>
+    
+    <div class="container">
+        <h1 class="products-title">Produk Kami</h1>
+        
+        <div class="products-grid">
+            <!-- Produk 1 -->
+            <div class="product-card color-1">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/ff9a9e/ffffff?text=Produk+1');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Bantal Sofa Merah Muda</h3>
+                    <p class="product-price">Rp 125.000</p>
+                    <p class="product-description">Bantal sofa nyaman dengan warna merah muda yang menawan.</p>
+                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                </div>
+            </div>
+            
+            <!-- Produk 2 -->
+            <div class="product-card color-2">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/a18cd1/ffffff?text=Produk+2');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Lampu Meja Ungu</h3>
+                    <p class="product-price">Rp 275.000</p>
+                    <p class="product-description">Lampu meja dengan warna ungu elegan dan cahaya yang lembut.</p>
+                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                </div>
+            </div>
+            
+            <!-- Produk 3 -->
+            <div class="product-card color-3">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/fbc2eb/ffffff?text=Produk+3');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Karpet Bulat Pink</h3>
+                    <p class="product-price">Rp 350.000</p>
+                    <p class="product-description">Karpet bulat lembut dengan warna pink pastel yang menenangkan.</p>
+                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                </div>
+            </div>
+            
+            <!-- Produk 4 -->
+            <div class="product-card color-4">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/84fab0/ffffff?text=Produk+4');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Pot Tanaman Hijau</h3>
+                    <p class="product-price">Rp 95.000</p>
+                    <p class="product-description">Pot tanaman modern dengan warna hijau segar.</p>
+                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                </div>
+            </div>
+            
+            <!-- Produk 5 -->
+            <div class="product-card color-5">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/8fd3f4/ffffff?text=Produk+5');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Tas Biru Langit</h3>
+                    <p class="product-price">Rp 225.000</p>
+                    <p class="product-description">Tas dengan warna biru langit yang cerah dan bahan tahan air.</p>
+                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                </div>
+            </div>
+            
+            <!-- Produk 6 -->
+            <div class="product-card color-6">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/ffc3a0/ffffff?text=Produk+6');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Selimut Oranye</h3>
+                    <p class="product-price">Rp 180.000</p>
+                    <p class="product-description">Selimut hangat dengan warna oranye cerah dan bahan super lembut.</p>
+                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                </div>
+            </div>
+            
+            <!-- Produk 7 -->
+            <div class="product-card color-7">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/ffafbd/ffffff?text=Produk+7');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Gelas Merah Muda</h3>
+                    <p class="product-price">Rp 65.000</p>
+                    <p class="product-description">Set gelas dengan warna merah muda yang manis.</p>
+                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                </div>
+            </div>
+            
+            <!-- Produk 8 -->
+            <div class="product-card color-8">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/a1c4fd/ffffff?text=Produk+8');"></div>
+                <div class="product-info">
+                    <h3 class="product-name">Bantal Kursi Biru</h3>
+                    <p class="product-price">Rp 110.000</p>
+                    <p class="product-description">Bantal kursi ergonomis dengan warna biru yang menenangkan.</p>
+                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="logo">TokoWarna</div>
+        <div class="footer-links">
+            <a href="#">Tentang Kami</a>
+            <a href="#">Kebijakan Privasi</a>
+            <a href="#">Syarat & Ketentuan</a>
+            <a href="#">Bantuan</a>
+        </div>
+        <div class="social-icons">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-tiktok"></i>
+        </div>
+        <p>&copy; 2023 TokoWarna. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Fungsi untuk animasi scroll
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Fungsi untuk tombol tambah ke keranjang
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.parentElement.querySelector('.product-name').textContent;
+                const productPrice = this.parentElement.querySelector('.product-price').textContent;
+                
+                // Animasi tombol
+                this.textContent = 'Ditambahkan!';
+                this.style.background = 'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)';
+                
+                setTimeout(() => {
+                    this.textContent = 'Tambah ke Keranjang';
+                    this.style.background = 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)';
+                }, 2000);
+                
+                // Tampilkan notifikasi (bisa dikembangkan lebih lanjut)
+                alert(`Produk "${productName}" (${productPrice}) telah ditambahkan ke keranjang!`);
+            });
+        });
+        
+        // Efek scroll untuk header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.2)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
