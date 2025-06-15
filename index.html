@@ -1,355 +1,493 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Online Warna-Warni</title>
+    <title>dixmarket</title>
     <style>
-        /* CSS */
+        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
-        
+
         body {
             background-color: #f5f5f5;
             color: #333;
+            overflow-x: hidden;
         }
-        
+
+        /* Header Styles */
         header {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
         }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        nav {
-            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
-            padding: 15px;
-            text-align: center;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 500;
-            padding: 5px 10px;
-            border-radius: 20px;
-            transition: all 0.3s;
-        }
-        
-        nav a:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
-        
-        .container {
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
-        
-        .products-title {
-            text-align: center;
-            margin: 30px 0;
-            font-size: 2rem;
-            color: #ff6b6b;
+
+        .logo {
+            display: flex;
+            align-items: center;
         }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            padding-bottom: 50px;
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
         }
-        
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #e74c3c;
+            letter-spacing: 1px;
         }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+
+        .nav-links {
+            display: flex;
+            list-style: none;
         }
-        
-        .product-image {
-            height: 200px;
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e74c3c;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('ttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmcjCoLkwcgPIfySWvYZQPqHNJUczHULwsoY-mgmgwtlkao_7AFcnsQx2CmbTEcfMv1G4&usqp=CAU');
             background-size: cover;
             background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
         }
-        
+
+        .hero-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #e74c3c;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: #e74c3c;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #333;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: #e74c3c;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-img {
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
         .product-info {
             padding: 20px;
+            text-align: center;
         }
-        
-        .product-name {
-            font-size: 1.2rem;
+
+        .product-info h3 {
+            font-size: 18px;
             margin-bottom: 10px;
             color: #333;
         }
-        
-        .product-price {
-            font-weight: bold;
-            color: #ff6b6b;
-            font-size: 1.3rem;
+
+        .product-info p {
+            color: #e74c3c;
+            font-weight: 700;
+            font-size: 20px;
             margin-bottom: 15px;
         }
-        
-        .product-description {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-        
+
         .add-to-cart {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            background-color: #333;
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 25px;
+            border-radius: 5px;
             cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-            transition: all 0.3s;
+            transition: background-color 0.3s;
         }
-        
+
         .add-to-cart:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(255,105,105,0.3);
+            background-color: #e74c3c;
         }
-        
+
+        /* Footer */
         footer {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: #333;
             color: white;
+            padding: 50px 20px;
             text-align: center;
-            padding: 30px 0;
-            margin-top: 50px;
         }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
         }
-        
-        .footer-links a {
-            color: white;
-            margin: 0 15px;
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #e74c3c;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #b3b3b3;
+            margin-bottom: 10px;
+            display: block;
             text-decoration: none;
+            transition: color 0.3s;
         }
-        
-        .social-icons {
-            margin: 20px 0;
+
+        .footer-column a:hover {
+            color: #e74c3c;
         }
-        
-        .social-icons i {
-            font-size: 1.5rem;
-            margin: 0 10px;
-            cursor: pointer;
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
         }
-        
-        /* Warna berbeda untuk setiap produk */
-        .color-1 .product-image { background-color: #ff9a9e; }
-        .color-2 .product-image { background-color: #a18cd1; }
-        .color-3 .product-image { background-color: #fbc2eb; }
-        .color-4 .product-image { background-color: #84fab0; }
-        .color-5 .product-image { background-color: #8fd3f4; }
-        .color-6 .product-image { background-color: #ffc3a0; }
-        .color-7 .product-image { background-color: #ffafbd; }
-        .color-8 .product-image { background-color: #a1c4fd; }
-        .color-9 .product-image { background-color: #c2e9fb; }
-        .color-10 .product-image { background-color: #d4fc79; }
+
+        .social-links a {
+            color: white;
+            font-size: 20px;
+        }
+
+        .copyright {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #b3b3b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .hero-content h2 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- HTML -->
     <header>
-        <div class="logo">TokoWarna</div>
-        <p>Temukan produk warna-warni favoritmu</p>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="https://imgur.com/a/JzuNIzl" alt="market">
+                <h1>Dix</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    
-    <nav>
-        <a href="#">Beranda</a>
-        <a href="#">Produk</a>
-        <a href="#">Kategori</a>
-        <a href="#">Tentang Kami</a>
-        <a href="#">Kontak</a>
-    </nav>
-    
-    <div class="container">
-        <h1 class="products-title">Produk Kami</h1>
-        
-        <div class="products-grid">
-            <!-- Produk 1 -->
-            <div class="product-card color-1">
-                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/ff9a9e/ffffff?text=Produk+1');"></div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>WELLCOME DixMarket</h2>
+            <p>✨ Welcome Dixmarket! ✨
+Temukan gaya Y2K yang bold, edgy, dan iconic di setiap koleksi kami!
+💿 Fashion throwback ke era 2000-an yang penuh warna, glitter
+Let's slay the Y2K vibes—stay cute, stay Y2K! 💖
+              <p> <a href="https://wa.me/6282315029797" target="_blank">[WhatsApp]</a>
+                <a href="https://www.instagram.com/dixmarket_com" target="_blank">    [Instagram]</a>
+                <a href="https://www.tiktok.com/@the.king.of.crypto" target="_blank">[tiktok]</a>
+
+              </p>
+
+</p>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <div class="section-title">
+            <h2>Produk T-Shirt</h2>
+        </div>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://i.imgur.com/gztQC7L.jpeg" alt="Premium Shirt">
+                </div>
                 <div class="product-info">
-                    <h3 class="product-name">Bantal Sofa Merah Muda</h3>
-                    <p class="product-price">Rp 125.000</p>
-                    <p class="product-description">Bantal sofa nyaman dengan warna merah muda yang menawan.</p>
-                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                    <h3>Classic White-Red Shirt</h3>
+                    <p>Rp 60.000</p>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
-            
-            <!-- Produk 2 -->
-            <div class="product-card color-2">
-                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/a18cd1/ffffff?text=Produk+2');"></div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://i.imgur.com/Y8fQlSD.jpeg" alt="Black T-Shirt">
+                </div>
                 <div class="product-info">
-                    <h3 class="product-name">Lampu Meja Ungu</h3>
-                    <p class="product-price">Rp 275.000</p>
-                    <p class="product-description">Lampu meja dengan warna ungu elegan dan cahaya yang lembut.</p>
-                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                    <h3>Essential Black </h3>
+                    <p>Rp 60.000</p>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
-            
-            <!-- Produk 3 -->
-            <div class="product-card color-3">
-                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/fbc2eb/ffffff?text=Produk+3');"></div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://i.imgur.com/gztQC7L.jpeg" alt="Red Hoodie">
+                </div>
                 <div class="product-info">
-                    <h3 class="product-name">Karpet Bulat Pink</h3>
-                    <p class="product-price">Rp 350.000</p>
-                    <p class="product-description">Karpet bulat lembut dengan warna pink pastel yang menenangkan.</p>
-                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                    <h3>Classic White-Red shirt</h3>
+                    <p>Rp 60.000</p>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
-            
-            <!-- Produk 4 -->
-            <div class="product-card color-4">
-                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/84fab0/ffffff?text=Produk+4');"></div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="" alt="Gray Sweater">
+                </div>
                 <div class="product-info">
-                    <h3 class="product-name">Pot Tanaman Hijau</h3>
-                    <p class="product-price">Rp 95.000</p>
-                    <p class="product-description">Pot tanaman modern dengan warna hijau segar.</p>
-                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                    <h3>Gray Knit Sweater</h3>
+                    <p>Rp 60.000</p>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
-            
-            <!-- Produk 5 -->
-            <div class="product-card color-5">
-                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/8fd3f4/ffffff?text=Produk+5');"></div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="" alt="Striped Shirt">
+                </div>
                 <div class="product-info">
-                    <h3 class="product-name">Tas Biru Langit</h3>
-                    <p class="product-price">Rp 225.000</p>
-                    <p class="product-description">Tas dengan warna biru langit yang cerah dan bahan tahan air.</p>
-                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                    <h3>Navy Striped Shirt</h3>
+                    <p>Rp 60.000</p>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
-            
-            <!-- Produk 6 -->
-            <div class="product-card color-6">
-                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/ffc3a0/ffffff?text=Produk+6');"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Selimut Oranye</h3>
-                    <p class="product-price">Rp 180.000</p>
-                    <p class="product-description">Selimut hangat dengan warna oranye cerah dan bahan super lembut.</p>
-                    <button class="add-to-cart">Tambah ke Keranjang</button>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="" alt="Denim Jacket">
                 </div>
-            </div>
-            
-            <!-- Produk 7 -->
-            <div class="product-card color-7">
-                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/ffafbd/ffffff?text=Produk+7');"></div>
                 <div class="product-info">
-                    <h3 class="product-name">Gelas Merah Muda</h3>
-                    <p class="product-price">Rp 65.000</p>
-                    <p class="product-description">Set gelas dengan warna merah muda yang manis.</p>
-                    <button class="add-to-cart">Tambah ke Keranjang</button>
-                </div>
-            </div>
-            
-            <!-- Produk 8 -->
-            <div class="product-card color-8">
-                <div class="product-image" style="background-image: url('https://via.placeholder.com/300x200/a1c4fd/ffffff?text=Produk+8');"></div>
-                <div class="product-info">
-                    <h3 class="product-name">Bantal Kursi Biru</h3>
-                    <p class="product-price">Rp 110.000</p>
-                    <p class="product-description">Bantal kursi ergonomis dengan warna biru yang menenangkan.</p>
-                    <button class="add-to-cart">Tambah ke Keranjang</button>
+                    <h3>Classic Denim Jacket</h3>
+                    <p>Rp 60.000</p>
+                    <button class="add-to-cart">Add to Cart</button>
                 </div>
             </div>
         </div>
-    </div>
-    
+    </section>
+
     <footer>
-        <div class="logo">TokoWarna</div>
-        <div class="footer-links">
-            <a href="#">Tentang Kami</a>
-            <a href="#">Kebijakan Privasi</a>
-            <a href="#">Syarat & Ketentuan</a>
-            <a href="#">Bantuan</a>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About LUXE</h3>
+                <p>We provide premium quality clothing with timeless designs that combine comfort and style.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#products">Shop</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <a href="#">Shipping Policy</a>
+                <a href="#">Return Policy</a>
+                <a href="#">Size Guide</a>
+                <a href="#">FAQs</a>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Fashion St, Jakarta</p>
+                <p><i class="fas fa-phone"></i> +62 812 3456 7890</p>
+                <p><i class="fas fa-envelope"></i> info@luxefashion.com</p>
+            </div>
         </div>
-        <div class="social-icons">
-            <i class="fab fa-facebook-f"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-tiktok"></i>
+        <div class="copyright">
+            <p>&copy; 2023 LUXE Fashion. All Rights Reserved.</p>
         </div>
-        <p>&copy; 2023 TokoWarna. Semua Hak Dilindungi.</p>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Fungsi untuk animasi scroll
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
                 
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
+
+        // Add to cart functionality
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
         
-        // Fungsi untuk tombol tambah ke keranjang
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const productName = this.parentElement.querySelector('.product-name').textContent;
-                const productPrice = this.parentElement.querySelector('.product-price').textContent;
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productCard = button.closest('.product-card');
+                const productName = productCard.querySelector('h3').textContent;
+                const productPrice = productCard.querySelector('p').textContent;
                 
-                // Animasi tombol
-                this.textContent = 'Ditambahkan!';
-                this.style.background = 'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)';
+                alert(`${productName} (${productPrice}) has been added to your cart!`);
                 
-                setTimeout(() => {
-                    this.textContent = 'Tambah ke Keranjang';
-                    this.style.background = 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)';
-                }, 2000);
-                
-                // Tampilkan notifikasi (bisa dikembangkan lebih lanjut)
-                alert(`Produk "${productName}" (${productPrice}) telah ditambahkan ke keranjang!`);
+                // Here you would typically add the item to a cart array or send to server
+                // For this example, we'll just show an alert
             });
         });
-        
-        // Efek scroll untuk header
-        window.addEventListener('scroll', function() {
+
+        // Change header style on scroll
+        window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
-            if(window.scrollY > 50) {
-                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.2)';
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
             } else {
-                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.style.background = '#ffffff';
             }
         });
     </script>
